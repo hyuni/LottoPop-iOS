@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MyNLotto" representedClassName="MyNLotto" syncable="YES">
+        <attribute name="bnusNo" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwNo" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo1" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo2" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo3" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo4" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo5" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo6" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="drwNo"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="MyPLotto" representedClassName="MyPLotto" syncable="YES">
+        <attribute name="rankClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rankNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="round" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="NLottoWinResult" representedClassName="NLottoWinResult" syncable="YES">
+        <attribute name="bnusNo" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwNo" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwNoDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="drwtNo1" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo2" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo3" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo4" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo5" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drwtNo6" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstPrzwnerCo" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstWinamnt" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="totSellamnt" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="PLottoWinResult" representedClassName="PLottoWinResult" syncable="YES">
+        <attribute name="drawDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pensionDrawDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rank" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rankAmt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rankClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rankNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="round" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MyNLotto" positionX="-54" positionY="9" width="128" height="165"/>
+        <element name="MyPLotto" positionX="-45" positionY="18" width="128" height="90"/>
+        <element name="NLottoWinResult" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="PLottoWinResult" positionX="-54" positionY="9" width="128" height="150"/>
+    </elements>
+</model>

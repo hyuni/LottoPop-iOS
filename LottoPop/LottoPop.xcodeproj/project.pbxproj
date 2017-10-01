@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A18D1C21F76994200F5259D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A18D1C11F76994200F5259D /* InfoPlist.strings */; };
+		5A2A61181F5EE0FF00072169 /* LottoPop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A61161F5EE0FF00072169 /* LottoPop.xcdatamodeld */; };
+		5A9CBA701F5B8A60000DBBCE /* BarcodeReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9CBA6F1F5B8A60000DBBCE /* BarcodeReaderVC.swift */; };
+		5AB36E501F5A3AF500A42367 /* NetStatusUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB36E4B1F5A3AF500A42367 /* NetStatusUtil.swift */; };
+		5AB36E511F5A3AF500A42367 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB36E4C1F5A3AF500A42367 /* Util.swift */; };
+		5AB36E531F5A3B0300A42367 /* UiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB36E521F5A3B0300A42367 /* UiUtil.swift */; };
+		5AB36E551F5A3C2400A42367 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB36E541F5A3C2400A42367 /* ToastView.swift */; };
+		5AB36E571F5A3C3100A42367 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB36E561F5A3C3100A42367 /* ToastView.xib */; };
+		5AB36E591F5ACFCA00A42367 /* MessageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB36E581F5ACFCA00A42367 /* MessageUtil.swift */; };
+		5ABF607D1F52D4D9007073F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF607C1F52D4D9007073F0 /* AppDelegate.swift */; };
+		5ABF60841F52D4D9007073F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ABF60831F52D4D9007073F0 /* Assets.xcassets */; };
+		5ABF60941F52D533007073F0 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF60931F52D533007073F0 /* Definition.swift */; };
+		5ADD0F401F54449B00459DD5 /* NLottoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD0F3F1F54449B00459DD5 /* NLottoTableViewCell.swift */; };
+		5ADD0F421F5445FA00459DD5 /* NLottoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ADD0F411F5445FA00459DD5 /* NLottoTableViewCell.xib */; };
+		5ADD0F441F54460A00459DD5 /* PLottoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ADD0F431F54460A00459DD5 /* PLottoTableViewCell.xib */; };
+		5ADD0F461F54461400459DD5 /* PLottoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD0F451F54461400459DD5 /* PLottoTableViewCell.swift */; };
+		5AF827C51F52D57800BF7C61 /* NLottoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF827C41F52D57800BF7C61 /* NLottoModel.swift */; };
+		5AF827C71F52D58100BF7C61 /* PLottoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF827C61F52D58100BF7C61 /* PLottoModel.swift */; };
+		5AF827C91F52D59400BF7C61 /* PrHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF827C81F52D59400BF7C61 /* PrHttpRequest.swift */; };
+		5AF827CD1F52D5B800BF7C61 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF827CC1F52D5B800BF7C61 /* MainVC.swift */; };
+		5AF827DF1F52D6E600BF7C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AF827DB1F52D6E600BF7C61 /* Main.storyboard */; };
+		5AF827E01F52D6E600BF7C61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AF827DD1F52D6E600BF7C61 /* LaunchScreen.storyboard */; };
+		5AF827E21F52D71500BF7C61 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF827E11F52D71500BF7C61 /* WebVC.swift */; };
+		5AFBB5C11F56E49900C65074 /* NLottoWinResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBB5C01F56E49900C65074 /* NLottoWinResultVC.swift */; };
+		5AFBB5C31F56E4A400C65074 /* PLottoWinResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFBB5C21F56E4A400C65074 /* PLottoWinResultVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5A18D1C11F76994200F5259D /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		5A2A61171F5EE0FF00072169 /* LottoPop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LottoPop.xcdatamodel; sourceTree = "<group>"; };
+		5A9CBA6F1F5B8A60000DBBCE /* BarcodeReaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeReaderVC.swift; sourceTree = "<group>"; };
+		5AB36E4B1F5A3AF500A42367 /* NetStatusUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetStatusUtil.swift; sourceTree = "<group>"; };
+		5AB36E4C1F5A3AF500A42367 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		5AB36E521F5A3B0300A42367 /* UiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiUtil.swift; sourceTree = "<group>"; };
+		5AB36E541F5A3C2400A42367 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		5AB36E561F5A3C3100A42367 /* ToastView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
+		5AB36E581F5ACFCA00A42367 /* MessageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUtil.swift; sourceTree = "<group>"; };
+		5ABF60791F52D4D9007073F0 /* LottoPop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoPop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ABF607C1F52D4D9007073F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5ABF60831F52D4D9007073F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5ABF60881F52D4D9007073F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5ABF60931F52D533007073F0 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
+		5ADD0F3F1F54449B00459DD5 /* NLottoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLottoTableViewCell.swift; sourceTree = "<group>"; };
+		5ADD0F411F5445FA00459DD5 /* NLottoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLottoTableViewCell.xib; sourceTree = "<group>"; };
+		5ADD0F431F54460A00459DD5 /* PLottoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PLottoTableViewCell.xib; sourceTree = "<group>"; };
+		5ADD0F451F54461400459DD5 /* PLottoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLottoTableViewCell.swift; sourceTree = "<group>"; };
+		5AF827C41F52D57800BF7C61 /* NLottoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLottoModel.swift; sourceTree = "<group>"; };
+		5AF827C61F52D58100BF7C61 /* PLottoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLottoModel.swift; sourceTree = "<group>"; };
+		5AF827C81F52D59400BF7C61 /* PrHttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrHttpRequest.swift; sourceTree = "<group>"; };
+		5AF827CC1F52D5B800BF7C61 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		5AF827DC1F52D6E600BF7C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5AF827DE1F52D6E600BF7C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5AF827E11F52D71500BF7C61 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
+		5AFBB5C01F56E49900C65074 /* NLottoWinResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLottoWinResultVC.swift; sourceTree = "<group>"; };
+		5AFBB5C21F56E4A400C65074 /* PLottoWinResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLottoWinResultVC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5ABF60761F52D4D9007073F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A2A61151F5EE0EE00072169 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5A2A61161F5EE0FF00072169 /* LottoPop.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		5AB36E4A1F5A3AF500A42367 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5AB36E4C1F5A3AF500A42367 /* Util.swift */,
+				5AB36E581F5ACFCA00A42367 /* MessageUtil.swift */,
+				5AB36E4B1F5A3AF500A42367 /* NetStatusUtil.swift */,
+				5AB36E521F5A3B0300A42367 /* UiUtil.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		5ABF60701F52D4D9007073F0 = {
+			isa = PBXGroup;
+			children = (
+				5ABF607B1F52D4D9007073F0 /* LottoPop */,
+				5ABF607A1F52D4D9007073F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5ABF607A1F52D4D9007073F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5ABF60791F52D4D9007073F0 /* LottoPop.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5ABF607B1F52D4D9007073F0 /* LottoPop */ = {
+			isa = PBXGroup;
+			children = (
+				5ABF608F1F52D510007073F0 /* PrBase */,
+				5ABF60921F52D510007073F0 /* Helper */,
+				5ABF60901F52D510007073F0 /* Model */,
+				5ABF60911F52D510007073F0 /* View */,
+				5ABF608E1F52D510007073F0 /* Controller */,
+				5ABF607C1F52D4D9007073F0 /* AppDelegate.swift */,
+				5ABF60831F52D4D9007073F0 /* Assets.xcassets */,
+				5ABF60881F52D4D9007073F0 /* Info.plist */,
+				5A18D1C11F76994200F5259D /* InfoPlist.strings */,
+			);
+			path = LottoPop;
+			sourceTree = "<group>";
+		};
+		5ABF608E1F52D510007073F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5AF827CC1F52D5B800BF7C61 /* MainVC.swift */,
+				5A9CBA6F1F5B8A60000DBBCE /* BarcodeReaderVC.swift */,
+				5AFBB5C01F56E49900C65074 /* NLottoWinResultVC.swift */,
+				5AFBB5C21F56E4A400C65074 /* PLottoWinResultVC.swift */,
+				5AF827E11F52D71500BF7C61 /* WebVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5ABF608F1F52D510007073F0 /* PrBase */ = {
+			isa = PBXGroup;
+			children = (
+				5ABF60931F52D533007073F0 /* Definition.swift */,
+			);
+			path = PrBase;
+			sourceTree = "<group>";
+		};
+		5ABF60901F52D510007073F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A2A61151F5EE0EE00072169 /* CoreData */,
+				5AF827C41F52D57800BF7C61 /* NLottoModel.swift */,
+				5AF827C61F52D58100BF7C61 /* PLottoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5ABF60911F52D510007073F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5AF827DD1F52D6E600BF7C61 /* LaunchScreen.storyboard */,
+				5AF827DB1F52D6E600BF7C61 /* Main.storyboard */,
+				5ADD0F3F1F54449B00459DD5 /* NLottoTableViewCell.swift */,
+				5ADD0F411F5445FA00459DD5 /* NLottoTableViewCell.xib */,
+				5ADD0F451F54461400459DD5 /* PLottoTableViewCell.swift */,
+				5ADD0F431F54460A00459DD5 /* PLottoTableViewCell.xib */,
+				5AB36E541F5A3C2400A42367 /* ToastView.swift */,
+				5AB36E561F5A3C3100A42367 /* ToastView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5ABF60921F52D510007073F0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5AB36E4A1F5A3AF500A42367 /* Util */,
+				5AF827C81F52D59400BF7C61 /* PrHttpRequest.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5ABF60781F52D4D9007073F0 /* LottoPop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5ABF608B1F52D4D9007073F0 /* Build configuration list for PBXNativeTarget "LottoPop" */;
+			buildPhases = (
+				5ABF60751F52D4D9007073F0 /* Sources */,
+				5ABF60761F52D4D9007073F0 /* Frameworks */,
+				5ABF60771F52D4D9007073F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LottoPop;
+			productName = LottoPop;
+			productReference = 5ABF60791F52D4D9007073F0 /* LottoPop.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5ABF60711F52D4D9007073F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "구홍석";
+				TargetAttributes = {
+					5ABF60781F52D4D9007073F0 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5ABF60741F52D4D9007073F0 /* Build configuration list for PBXProject "LottoPop" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5ABF60701F52D4D9007073F0;
+			productRefGroup = 5ABF607A1F52D4D9007073F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5ABF60781F52D4D9007073F0 /* LottoPop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5ABF60771F52D4D9007073F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AB36E571F5A3C3100A42367 /* ToastView.xib in Resources */,
+				5A18D1C21F76994200F5259D /* InfoPlist.strings in Resources */,
+				5AF827E01F52D6E600BF7C61 /* LaunchScreen.storyboard in Resources */,
+				5ABF60841F52D4D9007073F0 /* Assets.xcassets in Resources */,
+				5AF827DF1F52D6E600BF7C61 /* Main.storyboard in Resources */,
+				5ADD0F421F5445FA00459DD5 /* NLottoTableViewCell.xib in Resources */,
+				5ADD0F441F54460A00459DD5 /* PLottoTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5ABF60751F52D4D9007073F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A9CBA701F5B8A60000DBBCE /* BarcodeReaderVC.swift in Sources */,
+				5AB36E501F5A3AF500A42367 /* NetStatusUtil.swift in Sources */,
+				5AF827C71F52D58100BF7C61 /* PLottoModel.swift in Sources */,
+				5AB36E511F5A3AF500A42367 /* Util.swift in Sources */,
+				5AF827C51F52D57800BF7C61 /* NLottoModel.swift in Sources */,
+				5AF827CD1F52D5B800BF7C61 /* MainVC.swift in Sources */,
+				5AB36E531F5A3B0300A42367 /* UiUtil.swift in Sources */,
+				5ABF60941F52D533007073F0 /* Definition.swift in Sources */,
+				5ABF607D1F52D4D9007073F0 /* AppDelegate.swift in Sources */,
+				5ADD0F461F54461400459DD5 /* PLottoTableViewCell.swift in Sources */,
+				5AFBB5C11F56E49900C65074 /* NLottoWinResultVC.swift in Sources */,
+				5AF827E21F52D71500BF7C61 /* WebVC.swift in Sources */,
+				5AFBB5C31F56E4A400C65074 /* PLottoWinResultVC.swift in Sources */,
+				5A2A61181F5EE0FF00072169 /* LottoPop.xcdatamodeld in Sources */,
+				5AF827C91F52D59400BF7C61 /* PrHttpRequest.swift in Sources */,
+				5AB36E551F5A3C2400A42367 /* ToastView.swift in Sources */,
+				5AB36E591F5ACFCA00A42367 /* MessageUtil.swift in Sources */,
+				5ADD0F401F54449B00459DD5 /* NLottoTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5AF827DB1F52D6E600BF7C61 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF827DC1F52D6E600BF7C61 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5AF827DD1F52D6E600BF7C61 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AF827DE1F52D6E600BF7C61 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5ABF60891F52D4D9007073F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5ABF608A1F52D4D9007073F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5ABF608C1F52D4D9007073F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JH5D2KM966;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = LottoPop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prangbi.ios.LottoPop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5ABF608D1F52D4D9007073F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JH5D2KM966;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = LottoPop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prangbi.ios.LottoPop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5ABF60741F52D4D9007073F0 /* Build configuration list for PBXProject "LottoPop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ABF60891F52D4D9007073F0 /* Debug */,
+				5ABF608A1F52D4D9007073F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5ABF608B1F52D4D9007073F0 /* Build configuration list for PBXNativeTarget "LottoPop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ABF608C1F52D4D9007073F0 /* Debug */,
+				5ABF608D1F52D4D9007073F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5A2A61161F5EE0FF00072169 /* LottoPop.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A2A61171F5EE0FF00072169 /* LottoPop.xcdatamodel */,
+			);
+			currentVersion = 5A2A61171F5EE0FF00072169 /* LottoPop.xcdatamodel */;
+			path = LottoPop.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5ABF60711F52D4D9007073F0 /* Project object */;
+}
