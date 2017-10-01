@@ -3,16 +3,23 @@
 //  LottoPop
 //
 //  Created by 구홍석 on 2017. 8. 30..
-//  Copyright © 2017년 구홍석. All rights reserved.
+//  Copyright © 2017년 Prangbi. All rights reserved.
 //
 
 import UIKit
 
+// MARK: - NLottoWinResultVC
 class NLottoWinResultVC: UIViewController {
     // Constant
     static let WIN_RESULT_WEB_URL = SERVER_URL + "/gameResult.do?method=byWin&drwNo="
     
     // MARK: Outlet
+    @IBOutlet weak var number1Label: UILabel!
+    @IBOutlet weak var number2Label: UILabel!
+    @IBOutlet weak var number3Label: UILabel!
+    @IBOutlet weak var number4Label: UILabel!
+    @IBOutlet weak var number5Label: UILabel!
+    @IBOutlet weak var number6Label: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Variable
@@ -22,6 +29,7 @@ class NLottoWinResultVC: UIViewController {
     internal var autoRequestCount = 0
     internal var winResultList = Array<NLottoWinResult>()
     internal var indicator: UIActivityIndicatorView? = nil
+    internal var refreshControl = UIRefreshControl()
 
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -29,7 +37,29 @@ class NLottoWinResultVC: UIViewController {
         
         self.title = "나눔로또6/45"
         self.indicator = UiUtil.makeActivityIndicator(parentView: self.view)
+        self.initRecommendView()
+        self.initTableView()
         
+        self.indicator?.startAnimating()
+        self.refreshData(nil)
+        self.getRecommendationNumbers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.nLottoModel.save()
+    }
+    
+    internal func initRecommendView() {
+        self.number1Label.layer.cornerRadius = self.number1Label.frame.width / 2.0
+        self.number2Label.layer.cornerRadius = self.number2Label.frame.width / 2.0
+        self.number3Label.layer.cornerRadius = self.number3Label.frame.width / 2.0
+        self.number4Label.layer.cornerRadius = self.number4Label.frame.width / 2.0
+        self.number5Label.layer.cornerRadius = self.number5Label.frame.width / 2.0
+        self.number6Label.layer.cornerRadius = self.number6Label.frame.width / 2.0
+    }
+    
+    internal func initTableView() {
         let nLottoCellNib = UINib(nibName: "NLottoTableViewCell", bundle: .main)
         self.tableView.register(nLottoCellNib, forCellReuseIdentifier: "NLottoTableViewCell")
         self.tableView.estimatedRowHeight = 44.0
@@ -37,15 +67,8 @@ class NLottoWinResultVC: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        self.isLoading = true
-        self.nextDrwNo = 0
-        self.autoRequestCount = 0
-        self.getWinResult()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.nLottoModel.save()
+        self.refreshControl.addTarget(self, action: #selector(NLottoWinResultVC.refreshData(_:)), for: .valueChanged)
+        self.tableView.refreshControl = self.refreshControl
     }
 }
 
@@ -68,39 +91,90 @@ extension NLottoWinResultVC {
             break
         }
     }
+    
+    @IBAction func pressedRecommendButton(_ sender: UIButton) {
+        self.getRecommendationNumbers()
+    }
 }
 
 // MARK: - Function
 extension NLottoWinResultVC {
-    func getWinResult() {
-        self.indicator?.startAnimating()
-        self.nLottoModel.getWinResult(drwNo: self.nextDrwNo) { (winResult, error) in
-            if nil == error {
-                var shouldRequestMore = false
-                if nil != winResult {
-                    self.winResultList.append(winResult!)
-                    self.nextDrwNo = winResult!.drwNo - 1
-                    
-                    self.autoRequestCount += 1
-                    if COUNT_PER_PAGE > self.autoRequestCount && 0 < self.nextDrwNo {
-                        shouldRequestMore = true
-                    }
-                }
+    func getRecommendationNumbers() {
+        weak var weakSelf = self
+        DispatchQueue.global().async {
+            let numbers = self.nLottoModel.getRecommendationNumbers()
+            DispatchQueue.main.async {
+                weakSelf?.number1Label.text = String(numbers[0])
+                weakSelf?.number2Label.text = String(numbers[1])
+                weakSelf?.number3Label.text = String(numbers[2])
+                weakSelf?.number4Label.text = String(numbers[3])
+                weakSelf?.number5Label.text = String(numbers[4])
+                weakSelf?.number6Label.text = String(numbers[5])
                 
-                if true == shouldRequestMore {
-                    self.getWinResult()
-                } else {
-                    self.nLottoModel.save()
-                    self.tableView.reloadData()
-                    self.indicator?.stopAnimating()
-                    self.isLoading = false
+                weakSelf?.number1Label.backgroundColor = UiUtil.getNLottoNumberColor(number: Int16(numbers[0]))
+                weakSelf?.number2Label.backgroundColor = UiUtil.getNLottoNumberColor(number: Int16(numbers[1]))
+                weakSelf?.number3Label.backgroundColor = UiUtil.getNLottoNumberColor(number: Int16(numbers[2]))
+                weakSelf?.number4Label.backgroundColor = UiUtil.getNLottoNumberColor(number: Int16(numbers[3]))
+                weakSelf?.number5Label.backgroundColor = UiUtil.getNLottoNumberColor(number: Int16(numbers[4]))
+                weakSelf?.number6Label.backgroundColor = UiUtil.getNLottoNumberColor(number: Int16(numbers[5]))
+            }
+        }
+    }
+    
+    @objc func refreshData(_ sender: UIRefreshControl?) {
+        self.isLoading = true
+        self.getLatestWinResult()
+    }
+    
+    func commonCompletion() {
+        self.nLottoModel.save()
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+        self.indicator?.stopAnimating()
+        self.isLoading = false
+    }
+    
+    func getWinResult() {
+        self.nLottoModel.getWinResult(drwNo: self.nextDrwNo, success: { (winResult) in
+            var shouldRequestMore = false
+            if nil != winResult {
+                self.winResultList.append(winResult!)
+                self.nextDrwNo = winResult!.drwNo - 1
+                
+                self.autoRequestCount += 1
+                if COUNT_PER_PAGE > self.autoRequestCount && 0 < self.nextDrwNo {
+                    shouldRequestMore = true
                 }
+            }
+            
+            if true == shouldRequestMore {
+                self.getWinResult()
             } else {
-                self.nLottoModel.save()
-                self.tableView.reloadData()
-                self.indicator?.stopAnimating()
-                self.isLoading = false
-                MessageUtil.showToast(text: error?.localizedDescription, parentView: self.view)
+                self.commonCompletion()
+            }
+        }) { (errMsg) in
+            self.commonCompletion()
+            if nil != errMsg {
+                MessageUtil.showToast(text: errMsg, parentView: self.view)
+            }
+        }
+    }
+    
+    func getLatestWinResult() {
+        self.nLottoModel.getLatestWinResult(success: { (winResult) in
+            self.winResultList.removeAll()
+            if nil != winResult {
+                self.winResultList.append(winResult!)
+                self.nextDrwNo = winResult!.drwNo - 1
+                self.autoRequestCount += 1
+                self.getWinResult()
+            } else {
+                self.commonCompletion()
+            }
+        }) { (errMsg) in
+            self.commonCompletion()
+            if nil != errMsg {
+                MessageUtil.showToast(text: errMsg, parentView: self.view)
             }
         }
     }
@@ -114,30 +188,26 @@ extension NLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let winResult = self.winResultList[indexPath.row]
-        let firstWinAmount = Util.amountString(amount: winResult.firstWinamnt) ?? ""
-
         let nLottoCell = tableView.dequeueReusableCell(withIdentifier: "NLottoTableViewCell") as! NLottoTableViewCell
-        nLottoCell.titleDrwNoLabel.text = String(winResult.drwNo)
-        nLottoCell.titleLabel.text = "나눔로또6/45"
-        nLottoCell.titleDateLabel.text = "(" + (winResult.drwNoDate ?? "") + ")"
-        nLottoCell.resultLabel.text = "1등 " + String(winResult.firstPrzwnerCo) + "게임"
-        nLottoCell.resultAmountLabel.text = "게임당 " + firstWinAmount + "원"
+        nLottoCell.setTitleData(
+            drwNo: winResult.drwNo,
+            drwNoDate: winResult.drwNoDate
+        )
         
-        nLottoCell.number1Label.text = String(winResult.drwtNo1)
-        nLottoCell.number2Label.text = String(winResult.drwtNo2)
-        nLottoCell.number3Label.text = String(winResult.drwtNo3)
-        nLottoCell.number4Label.text = String(winResult.drwtNo4)
-        nLottoCell.number5Label.text = String(winResult.drwtNo5)
-        nLottoCell.number6Label.text = String(winResult.drwtNo6)
-        nLottoCell.bonusNumberLabel.text = String(winResult.bnusNo)
+        nLottoCell.setResultData(
+            firstPrzwnerCo: winResult.firstPrzwnerCo,
+            firstWinamnt: winResult.firstWinamnt
+        )
         
-        nLottoCell.number1Label.backgroundColor = UiUtil.getNLottoNumberColor(number: winResult.drwtNo1)
-        nLottoCell.number2Label.backgroundColor = UiUtil.getNLottoNumberColor(number: winResult.drwtNo2)
-        nLottoCell.number3Label.backgroundColor = UiUtil.getNLottoNumberColor(number: winResult.drwtNo3)
-        nLottoCell.number4Label.backgroundColor = UiUtil.getNLottoNumberColor(number: winResult.drwtNo4)
-        nLottoCell.number5Label.backgroundColor = UiUtil.getNLottoNumberColor(number: winResult.drwtNo5)
-        nLottoCell.number6Label.backgroundColor = UiUtil.getNLottoNumberColor(number: winResult.drwtNo6)
-        nLottoCell.bonusNumberLabel.backgroundColor = UiUtil.getNLottoNumberColor(number: winResult.bnusNo)
+        nLottoCell.setNumberData(
+            drwtNo1: winResult.drwtNo1,
+            drwtNo2: winResult.drwtNo2,
+            drwtNo3: winResult.drwtNo3,
+            drwtNo4: winResult.drwtNo4,
+            drwtNo5: winResult.drwtNo5,
+            drwtNo6: winResult.drwtNo6,
+            bnusNo: winResult.bnusNo
+        )
         return nLottoCell
     }
     
@@ -149,6 +219,7 @@ extension NLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == self.winResultList.count - 1 {
             self.isLoading = true
             self.autoRequestCount = 0
+            self.indicator?.startAnimating()
             self.getWinResult()
         }
     }

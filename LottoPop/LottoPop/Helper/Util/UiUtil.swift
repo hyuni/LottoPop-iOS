@@ -3,7 +3,7 @@
 //  LottoPop
 //
 //  Created by 구홍석 on 2017. 9. 2..
-//  Copyright © 2017년 구홍석. All rights reserved.
+//  Copyright © 2017년 Prangbi. All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,8 @@ class UiUtil {
         } else if true == vc?.isKind(of: UISplitViewController.self) {
             let splitVC = vc as! UISplitViewController
             return splitVC.viewControllers.last
+        } else if true == vc?.isKind(of: UIViewController.self) {
+            return vc
         } else {
             return vc?.presentedViewController
         }

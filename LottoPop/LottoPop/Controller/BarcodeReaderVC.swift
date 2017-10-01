@@ -3,7 +3,7 @@
 //  LottoPop
 //
 //  Created by 구홍석 on 2017. 9. 3..
-//  Copyright © 2017년 구홍석. All rights reserved.
+//  Copyright © 2017년 Prangbi. All rights reserved.
 //
 
 import UIKit
@@ -13,6 +13,7 @@ protocol BarcodeReaderVcDelegate {
     func barcodeReaderVC(sender: BarcodeReaderVC, didRead value: String?)
 }
 
+// MARK: - BarcodeReaderVC
 class BarcodeReaderVC: UIViewController {
     // MARK: Variable
     let supportedCodeTypes: [AVMetadataObject.ObjectType] = [.qr]
@@ -26,8 +27,10 @@ class BarcodeReaderVC: UIViewController {
         self.title = "QR 코드 스캔"
         self.startDevice()
     }
-    
-    // MARK: Function
+}
+
+// MARK: Function
+extension BarcodeReaderVC {
     func startDevice() {
         if let device = AVCaptureDevice.default(for: AVMediaType.video),
             let input = try? AVCaptureDeviceInput(device: device)
@@ -51,6 +54,7 @@ class BarcodeReaderVC: UIViewController {
     }
 }
 
+// MARK: - AVCaptureMetadataOutputObjectsDelegate
 extension BarcodeReaderVC: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if 0 < metadataObjects.count,

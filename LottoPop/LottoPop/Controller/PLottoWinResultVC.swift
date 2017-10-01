@@ -3,16 +3,19 @@
 //  LottoPop
 //
 //  Created by 구홍석 on 2017. 8. 30..
-//  Copyright © 2017년 구홍석. All rights reserved.
+//  Copyright © 2017년 Prangbi. All rights reserved.
 //
 
 import UIKit
 
+// MARK: - PLottoWinResultVC
 class PLottoWinResultVC: UIViewController {
     // MARK: Constant
     static let WIN_RESULT_WEB_URL = SERVER_URL + "/gameResult.do?method=win520&Round="
     
     // MARK: Outlet
+    @IBOutlet weak var group1Label: UILabel!
+    @IBOutlet weak var group2Label: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Variable
@@ -22,6 +25,7 @@ class PLottoWinResultVC: UIViewController {
     internal var autoRequestCount = 0
     internal var winResultList = Array<[PLottoWinResult]>()
     internal var indicator: UIActivityIndicatorView? = nil
+    internal var refreshControl = UIRefreshControl()
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -29,7 +33,25 @@ class PLottoWinResultVC: UIViewController {
         
         self.title = "연금복권520"
         self.indicator = UiUtil.makeActivityIndicator(parentView: self.view)
+        self.initRecommendView()
+        self.initTableView()
         
+        self.indicator?.startAnimating()
+        self.refreshData(nil)
+        self.getRecommendationNumbers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.pLottoModel.save()
+    }
+    
+    internal func initRecommendView() {
+        self.group1Label.layer.cornerRadius = 4.0
+        self.group2Label.layer.cornerRadius = 4.0
+    }
+    
+    internal func initTableView() {
         let pLottoCellNib = UINib(nibName: "PLottoTableViewCell", bundle: .main)
         self.tableView.register(pLottoCellNib, forCellReuseIdentifier: "PLottoTableViewCell")
         self.tableView.estimatedRowHeight = 44.0
@@ -37,15 +59,8 @@ class PLottoWinResultVC: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        self.isLoading = true
-        self.nextRound = 0
-        self.autoRequestCount = 0
-        self.getWinResult()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.pLottoModel.save()
+        self.refreshControl.addTarget(self, action: #selector(PLottoWinResultVC.refreshData(_:)), for: .valueChanged)
+        self.tableView.refreshControl = self.refreshControl
     }
 }
 
@@ -68,43 +83,86 @@ extension PLottoWinResultVC {
             break
         }
     }
+    
+    @IBAction func pressedRecommendButton(_ sender: UIButton) {
+        self.getRecommendationNumbers()
+    }
 }
 
 // MARK: - Function
 extension PLottoWinResultVC {
+    func getRecommendationNumbers() {
+        weak var weakSelf = self
+        DispatchQueue.global().async {
+            let numbers = self.pLottoModel.getRecommendationNumbers()
+            DispatchQueue.main.async {
+                weakSelf?.group1Label.text = String(numbers[0])
+                weakSelf?.group2Label.text = String(numbers[1])
+                
+                weakSelf?.group1Label.backgroundColor = UiUtil.getPLottoGroupColor(number: numbers[0])
+                weakSelf?.group2Label.backgroundColor = UiUtil.getPLottoGroupColor(number: numbers[1])
+            }
+        }
+    }
+    
+    @objc func refreshData(_ sender: UIRefreshControl?) {
+        self.isLoading = true
+        self.getLatestWinResult()
+    }
+    
+    func commonCompletion() {
+        self.pLottoModel.save()
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+        self.indicator?.stopAnimating()
+        self.isLoading = false
+    }
+    
     func getWinResult() {
-        self.indicator?.startAnimating()
-        self.pLottoModel.getWinResult(round: self.nextRound) { (winResultArr, error) in
-            if nil == error {
-                var shouldRequestMore = false
-                if nil != winResultArr {
-                    self.winResultList.append(winResultArr!)
-                    if let roundStr = winResultArr?[0].round, let round = Int(roundStr) {
-                        self.nextRound = round - 1
-                    } else {
-                        self.nextRound -= 1
-                    }
-                    
-                    self.autoRequestCount += 1
-                    if COUNT_PER_PAGE > self.autoRequestCount && 0 < self.nextRound {
-                        shouldRequestMore = true
-                    }
+        self.pLottoModel.getWinResult(round: self.nextRound, success: { (winResultArr) in
+            var shouldRequestMore = false
+            if nil != winResultArr {
+                self.winResultList.append(winResultArr!)
+                if let roundStr = winResultArr?[0].round, let round = Int(roundStr) {
+                    self.nextRound = round - 1
+                } else {
+                    self.nextRound -= 1
                 }
                 
-                if true == shouldRequestMore {
-                    self.getWinResult()
-                } else {
-                    self.pLottoModel.save()
-                    self.tableView.reloadData()
-                    self.indicator?.stopAnimating()
-                    self.isLoading = false
+                self.autoRequestCount += 1
+                if COUNT_PER_PAGE > self.autoRequestCount && 0 < self.nextRound {
+                    shouldRequestMore = true
                 }
+            }
+            
+            if true == shouldRequestMore {
+                self.getWinResult()
             } else {
-                self.pLottoModel.save()
-                self.tableView.reloadData()
-                self.indicator?.stopAnimating()
-                self.isLoading = false
-                MessageUtil.showToast(text: error?.localizedDescription, parentView: self.view)
+                self.commonCompletion()
+            }
+        }) { (errMsg) in
+            self.commonCompletion()
+            if nil != errMsg {
+                MessageUtil.showToast(text: errMsg, parentView: self.view)
+            }
+        }
+    }
+    
+    func getLatestWinResult() {
+        self.pLottoModel.getLatestWinResult(success: { (winResultArr) in
+            self.winResultList.removeAll()
+            self.winResultList.append(winResultArr!)
+            if let roundStr = winResultArr?[0].round, let round = Int(roundStr) {
+                self.nextRound = round - 1
+                self.autoRequestCount += 1
+                self.getWinResult()
+            } else {
+                self.commonCompletion()
+            }
+        }) { (errMsg) in
+            self.commonCompletion()
+            if nil != errMsg {
+                MessageUtil.showToast(text: errMsg, parentView: self.view)
             }
         }
     }
@@ -118,32 +176,19 @@ extension PLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pLottoCell = tableView.dequeueReusableCell(withIdentifier: "PLottoTableViewCell") as! PLottoTableViewCell
-        pLottoCell.titleRoundLabel.text = nil
-        pLottoCell.titleLabel.text = nil
-        pLottoCell.titleDateLabel.text = nil
-        pLottoCell.resultLabel.text = nil
-        pLottoCell.resultAmountLabel.text = nil
-        pLottoCell.group1Label.text = nil
-        pLottoCell.num1_1Label.text = nil
-        pLottoCell.num1_2Label.text = nil
-        pLottoCell.num1_3Label.text = nil
-        pLottoCell.num1_4Label.text = nil
-        pLottoCell.num1_5Label.text = nil
-        pLottoCell.num1_6Label.text = nil
-        pLottoCell.group2Label.text = nil
-        pLottoCell.num2_1Label.text = nil
-        pLottoCell.num2_2Label.text = nil
-        pLottoCell.num2_3Label.text = nil
-        pLottoCell.num2_4Label.text = nil
-        pLottoCell.num2_5Label.text = nil
-        pLottoCell.num2_6Label.text = nil
-        pLottoCell.group1Label.backgroundColor = nil
-        pLottoCell.group2Label.backgroundColor = nil
+        pLottoCell.resetCell()
         
         let winResultArr = self.winResultList[indexPath.row]
         if 1 <= winResultArr.count {
             let winResult = winResultArr[0]
-            let rankClass = (nil != winResult.rankClass) ? (Int(winResult.rankClass!) ?? 0) : 0
+            
+            pLottoCell.setTitleData(
+                round: winResult.round,
+                pensionDrawDate: winResult.pensionDrawDate
+            )
+            
+            pLottoCell.setResultData(gameCount: winResultArr.count)
+            
             var rankNoCharacters = winResult.rankNo?.characters
             let num1 = rankNoCharacters?.removeFirst()
             let num2 = rankNoCharacters?.removeFirst()
@@ -151,26 +196,19 @@ extension PLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
             let num4 = rankNoCharacters?.removeFirst()
             let num5 = rankNoCharacters?.removeFirst()
             let num6 = rankNoCharacters?.removeFirst()
-            
-            pLottoCell.titleRoundLabel.text = winResult.round
-            pLottoCell.titleLabel.text = "연금복권520"
-            pLottoCell.titleDateLabel.text = "(" + (winResult.pensionDrawDate ?? "") + ")"
-            pLottoCell.resultLabel.text = "1등 " + String(winResultArr.count) + "게임"
-            pLottoCell.resultAmountLabel.text = "월 500만원 X 20년"
-            
-            pLottoCell.group1Label.text = (winResult.rankClass ?? "") + "조"
-            pLottoCell.num1_1Label.text = (nil != num1) ? String(num1!) : ""
-            pLottoCell.num1_2Label.text = (nil != num2) ? String(num2!) : ""
-            pLottoCell.num1_3Label.text = (nil != num3) ? String(num3!) : ""
-            pLottoCell.num1_4Label.text = (nil != num4) ? String(num4!) : ""
-            pLottoCell.num1_5Label.text = (nil != num5) ? String(num5!) : ""
-            pLottoCell.num1_6Label.text = (nil != num6) ? String(num6!) : ""
-            
-            pLottoCell.group1Label.backgroundColor = UiUtil.getPLottoGroupColor(number: rankClass)
+            pLottoCell.setNumberGroup1Data(
+                rankClass: winResult.rankClass,
+                num1: (nil != num1) ? String(num1!) : "",
+                num2: (nil != num2) ? String(num2!) : "",
+                num3: (nil != num3) ? String(num3!) : "",
+                num4: (nil != num4) ? String(num4!) : "",
+                num5: (nil != num5) ? String(num5!) : "",
+                num6: (nil != num6) ? String(num6!) : ""
+            )
         }
         if 2 <= winResultArr.count {
             let winResult = winResultArr[1]
-            let rankClass = (nil != winResult.rankClass) ? (Int(winResult.rankClass!) ?? 0) : 0
+            
             var rankNoCharacters = winResult.rankNo?.characters
             let num1 = rankNoCharacters?.removeFirst()
             let num2 = rankNoCharacters?.removeFirst()
@@ -178,16 +216,15 @@ extension PLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
             let num4 = rankNoCharacters?.removeFirst()
             let num5 = rankNoCharacters?.removeFirst()
             let num6 = rankNoCharacters?.removeFirst()
-            
-            pLottoCell.group2Label.text = (winResult.rankClass ?? "") + "조"
-            pLottoCell.num2_1Label.text = (nil != num1) ? String(num1!) : ""
-            pLottoCell.num2_2Label.text = (nil != num2) ? String(num2!) : ""
-            pLottoCell.num2_3Label.text = (nil != num3) ? String(num3!) : ""
-            pLottoCell.num2_4Label.text = (nil != num4) ? String(num4!) : ""
-            pLottoCell.num2_5Label.text = (nil != num5) ? String(num5!) : ""
-            pLottoCell.num2_6Label.text = (nil != num6) ? String(num6!) : ""
-            
-            pLottoCell.group2Label.backgroundColor = UiUtil.getPLottoGroupColor(number: rankClass)
+            pLottoCell.setNumberGroup2Data(
+                rankClass: winResult.rankClass,
+                num1: (nil != num1) ? String(num1!) : "",
+                num2: (nil != num2) ? String(num2!) : "",
+                num3: (nil != num3) ? String(num3!) : "",
+                num4: (nil != num4) ? String(num4!) : "",
+                num5: (nil != num5) ? String(num5!) : "",
+                num6: (nil != num6) ? String(num6!) : ""
+            )
         }
         return pLottoCell
     }
@@ -200,6 +237,7 @@ extension PLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == self.winResultList.count - 1 {
             self.isLoading = true
             self.autoRequestCount = 0
+            self.indicator?.startAnimating()
             self.getWinResult()
         }
     }

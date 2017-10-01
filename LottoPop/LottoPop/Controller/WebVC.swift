@@ -3,12 +3,13 @@
 //  LottoPop
 //
 //  Created by 구홍석 on 2017. 8. 27..
-//  Copyright © 2017년 구홍석. All rights reserved.
+//  Copyright © 2017년 Prangbi. All rights reserved.
 //
 
 import UIKit
 import WebKit
 
+// MARK: - WebVC
 class WebVC: UIViewController {
     // MARK: Outlet
     @IBOutlet weak var webView: UIWebView!
@@ -28,7 +29,7 @@ class WebVC: UIViewController {
     }
 }
 
-// MARK: - WKWebView
+// MARK: - UIWebViewDelegate
 extension WebVC: UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
         self.indicator?.startAnimating()

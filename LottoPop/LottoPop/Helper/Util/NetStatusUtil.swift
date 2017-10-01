@@ -3,7 +3,7 @@
 //  LottoPop
 //
 //  Created by 구홍석 on 2017. 9. 1..
-//  Copyright © 2017년 구홍석. All rights reserved.
+//  Copyright © 2017년 Prangbi. All rights reserved.
 //
 
 import UIKit

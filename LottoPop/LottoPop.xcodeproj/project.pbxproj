@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5A18D1C21F76994200F5259D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A18D1C11F76994200F5259D /* InfoPlist.strings */; };
-		5A2A61181F5EE0FF00072169 /* LottoPop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A2A61161F5EE0FF00072169 /* LottoPop.xcdatamodeld */; };
 		5A9CBA701F5B8A60000DBBCE /* BarcodeReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9CBA6F1F5B8A60000DBBCE /* BarcodeReaderVC.swift */; };
 		5AB36E501F5A3AF500A42367 /* NetStatusUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB36E4B1F5A3AF500A42367 /* NetStatusUtil.swift */; };
 		5AB36E511F5A3AF500A42367 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB36E4C1F5A3AF500A42367 /* Util.swift */; };
@@ -19,6 +18,9 @@
 		5ABF607D1F52D4D9007073F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF607C1F52D4D9007073F0 /* AppDelegate.swift */; };
 		5ABF60841F52D4D9007073F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ABF60831F52D4D9007073F0 /* Assets.xcassets */; };
 		5ABF60941F52D533007073F0 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF60931F52D533007073F0 /* Definition.swift */; };
+		5AD5D3B91F7F1F560089D98B /* LottoPop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AD5D3B71F7F1F560089D98B /* LottoPop.xcdatamodeld */; };
+		5AD5D3BB1F7F1F5F0089D98B /* NLottoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD5D3BA1F7F1F5F0089D98B /* NLottoEntity.swift */; };
+		5AD5D3BD1F7F1F8C0089D98B /* PLottoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD5D3BC1F7F1F8C0089D98B /* PLottoEntity.swift */; };
 		5ADD0F401F54449B00459DD5 /* NLottoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD0F3F1F54449B00459DD5 /* NLottoTableViewCell.swift */; };
 		5ADD0F421F5445FA00459DD5 /* NLottoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ADD0F411F5445FA00459DD5 /* NLottoTableViewCell.xib */; };
 		5ADD0F441F54460A00459DD5 /* PLottoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ADD0F431F54460A00459DD5 /* PLottoTableViewCell.xib */; };
@@ -36,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		5A18D1C11F76994200F5259D /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
-		5A2A61171F5EE0FF00072169 /* LottoPop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LottoPop.xcdatamodel; sourceTree = "<group>"; };
 		5A9CBA6F1F5B8A60000DBBCE /* BarcodeReaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeReaderVC.swift; sourceTree = "<group>"; };
 		5AB36E4B1F5A3AF500A42367 /* NetStatusUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetStatusUtil.swift; sourceTree = "<group>"; };
 		5AB36E4C1F5A3AF500A42367 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		5ABF60831F52D4D9007073F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5ABF60881F52D4D9007073F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ABF60931F52D533007073F0 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
+		5AD5D3B81F7F1F560089D98B /* LottoPop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LottoPop.xcdatamodel; sourceTree = "<group>"; };
+		5AD5D3BA1F7F1F5F0089D98B /* NLottoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLottoEntity.swift; sourceTree = "<group>"; };
+		5AD5D3BC1F7F1F8C0089D98B /* PLottoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLottoEntity.swift; sourceTree = "<group>"; };
 		5ADD0F3F1F54449B00459DD5 /* NLottoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLottoTableViewCell.swift; sourceTree = "<group>"; };
 		5ADD0F411F5445FA00459DD5 /* NLottoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NLottoTableViewCell.xib; sourceTree = "<group>"; };
 		5ADD0F431F54460A00459DD5 /* PLottoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PLottoTableViewCell.xib; sourceTree = "<group>"; };
@@ -75,14 +79,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A2A61151F5EE0EE00072169 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				5A2A61161F5EE0FF00072169 /* LottoPop.xcdatamodeld */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		5AB36E4A1F5A3AF500A42367 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +112,8 @@
 				5ABF608F1F52D510007073F0 /* PrBase */,
 				5ABF60921F52D510007073F0 /* Helper */,
 				5ABF60901F52D510007073F0 /* Model */,
-				5ABF60911F52D510007073F0 /* View */,
 				5ABF608E1F52D510007073F0 /* Controller */,
+				5ABF60911F52D510007073F0 /* View */,
 				5ABF607C1F52D4D9007073F0 /* AppDelegate.swift */,
 				5ABF60831F52D4D9007073F0 /* Assets.xcassets */,
 				5ABF60881F52D4D9007073F0 /* Info.plist */,
@@ -149,8 +145,10 @@
 		5ABF60901F52D510007073F0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5A2A61151F5EE0EE00072169 /* CoreData */,
+				5AD5D3B71F7F1F560089D98B /* LottoPop.xcdatamodeld */,
+				5AD5D3BA1F7F1F5F0089D98B /* NLottoEntity.swift */,
 				5AF827C41F52D57800BF7C61 /* NLottoModel.swift */,
+				5AD5D3BC1F7F1F8C0089D98B /* PLottoEntity.swift */,
 				5AF827C61F52D58100BF7C61 /* PLottoModel.swift */,
 			);
 			path = Model;
@@ -208,7 +206,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "구홍석";
+				ORGANIZATIONNAME = Prangbi;
 				TargetAttributes = {
 					5ABF60781F52D4D9007073F0 = {
 						CreatedOnToolsVersion = 9.0;
@@ -256,12 +254,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD5D3BD1F7F1F8C0089D98B /* PLottoEntity.swift in Sources */,
 				5A9CBA701F5B8A60000DBBCE /* BarcodeReaderVC.swift in Sources */,
 				5AB36E501F5A3AF500A42367 /* NetStatusUtil.swift in Sources */,
 				5AF827C71F52D58100BF7C61 /* PLottoModel.swift in Sources */,
 				5AB36E511F5A3AF500A42367 /* Util.swift in Sources */,
 				5AF827C51F52D57800BF7C61 /* NLottoModel.swift in Sources */,
 				5AF827CD1F52D5B800BF7C61 /* MainVC.swift in Sources */,
+				5AD5D3B91F7F1F560089D98B /* LottoPop.xcdatamodeld in Sources */,
 				5AB36E531F5A3B0300A42367 /* UiUtil.swift in Sources */,
 				5ABF60941F52D533007073F0 /* Definition.swift in Sources */,
 				5ABF607D1F52D4D9007073F0 /* AppDelegate.swift in Sources */,
@@ -269,7 +269,7 @@
 				5AFBB5C11F56E49900C65074 /* NLottoWinResultVC.swift in Sources */,
 				5AF827E21F52D71500BF7C61 /* WebVC.swift in Sources */,
 				5AFBB5C31F56E4A400C65074 /* PLottoWinResultVC.swift in Sources */,
-				5A2A61181F5EE0FF00072169 /* LottoPop.xcdatamodeld in Sources */,
+				5AD5D3BB1F7F1F5F0089D98B /* NLottoEntity.swift in Sources */,
 				5AF827C91F52D59400BF7C61 /* PrHttpRequest.swift in Sources */,
 				5AB36E551F5A3C2400A42367 /* ToastView.swift in Sources */,
 				5AB36E591F5ACFCA00A42367 /* MessageUtil.swift in Sources */,
@@ -468,12 +468,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5A2A61161F5EE0FF00072169 /* LottoPop.xcdatamodeld */ = {
+		5AD5D3B71F7F1F560089D98B /* LottoPop.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5A2A61171F5EE0FF00072169 /* LottoPop.xcdatamodel */,
+				5AD5D3B81F7F1F560089D98B /* LottoPop.xcdatamodel */,
 			);
-			currentVersion = 5A2A61171F5EE0FF00072169 /* LottoPop.xcdatamodel */;
+			currentVersion = 5AD5D3B81F7F1F560089D98B /* LottoPop.xcdatamodel */;
 			path = LottoPop.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
