@@ -25,4 +25,4 @@
 * [CocoaPods](https://cocoapods.org) 는 의존성 관리자로, 설치하려면 다음 명령어를 입력하세요.
 <pre><code>$ gem install cocoapods</code></pre>
 * CocoaPods가 설치되어 있다면, 프로젝트 디렉토리로 이동해 다음 명령를 입력해 라이브러리를 설치하세요.
-<pre><code>$ pod install</code></pre>
+<pre><code>$ pod update</code></pre>
