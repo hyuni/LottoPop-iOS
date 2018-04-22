@@ -21,10 +21,10 @@
 # 설치
 * [CocoaPods](https://cocoapods.org) \
   : CocoaPosd는 Swift와 Objective-C 프로젝트의 (라이브러리) 의존성 관리자입니다.
-<pre><code>$ gem install cocoapods</code></pre>
-* 라이브러리
+  <pre><code>$ gem install cocoapods</code></pre>
+* 라이브러리 \
   : 프로젝트 루트 디렉토리에서 다음을 입력하세요.
-<pre><code>$ pod install</code></pre>
+  <pre><code>$ pod install</code></pre>
 
 
 # 라이브러리
@@ -32,5 +32,5 @@
   : https://github.com/Alamofire/Alamofire \
   : HTTP 통신.
 * ObjectMapper \
-  : https://github.com/Hearst-DD/ObjectMapper
+  : https://github.com/Hearst-DD/ObjectMapper \
   : JSON 변환.
