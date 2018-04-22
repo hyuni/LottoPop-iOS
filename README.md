@@ -16,18 +16,6 @@
 * iOS 10.0+
 * Xcode 9.0+
 * Swift 4.0+
-<<<<<<< HEAD
- 
-
-# 라이브러리 설치
-* Alamofire: HTTP 통신.
-* ObjectMapper: JSON 변환.
-### CocoaPods
-* [CocoaPods](https://cocoapods.org) 는 의존성 관리자로, 설치하려면 다음 명령어를 입력하세요.
-<pre><code>$ gem install cocoapods</code></pre>
-* CocoaPods가 설치되어 있다면, 프로젝트 디렉토리로 이동해 다음 명령를 입력해 라이브러리를 설치하세요.
-<pre><code>$ pod update</code></pre>
-=======
 
 
 # 설치
@@ -46,4 +34,3 @@
 * ObjectMapper \
   : https://github.com/Hearst-DD/ObjectMapper \
   : JSON 변환.
->>>>>>> 79654be995769e88d13a4cf1a416235c2580bbb6
