@@ -1,1 +1,36 @@
 # LottoPop-iOS
+* 로또팝은 나눔로또6/45와 연금복권520의 당첨 결과를 확인할 수 있는 앱입니다.
+* [앱스토어로 이동](https://itunes.apple.com/kr/app/id1278737707?mt=8)
+ 
+
+# 기능
+* 메인 화면에서 나눔로또, 연금복권의 회차별 당첨 결과를 확인할 수 있습니다.
+* 번호를 일일이 비교할 필요 없이 복권의 QR 코드 스캔으로 당첨결과를 확인할 수 있습니다.
+* 나눔로또 번호화 연금복권 조번호를 추천해 드립니다.
+### 주의사항
+* 당첨 결과는 나눔로또 홈페이지에서 다시 한 번 확인하시기 바랍니다.
+* 추천번호는 당첨과 상관이 없으며, 당첨 결과에 따른 책임을 지지 않습니다.
+ 
+
+# 요구사항
+* iOS 10.0+
+* Xcode 9.0+
+* Swift 4.0+
+
+
+# 설치
+* [CocoaPods](https://cocoapods.org) \
+  : CocoaPosd는 Swift와 Objective-C 프로젝트의 (라이브러리) 의존성 관리자입니다.
+<pre><code>$ gem install cocoapods</code></pre>
+* 라이브러리
+  : 프로젝트 루트 디렉토리에서 다음을 입력하세요.
+<pre><code>$ pod install</code></pre>
+
+
+# 라이브러리
+* Alamofire \
+  : https://github.com/Alamofire/Alamofire \
+  : HTTP 통신.
+* ObjectMapper \
+  : https://github.com/Hearst-DD/ObjectMapper
+  : JSON 변환.
