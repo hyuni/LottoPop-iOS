@@ -2,8 +2,8 @@ platform :ios, '10.0'
 use_frameworks!
 
 def common_pods
-  pod 'Alamofire', '4.5.1' # https://github.com/Alamofire/Alamofire
-  pod 'ObjectMapper', '3.0.0' # https://github.com/Hearst-DD/ObjectMapper
+  pod 'Alamofire', '4.7.2' # https://github.com/Alamofire/Alamofire
+  pod 'ObjectMapper', '3.1.0' # https://github.com/Hearst-DD/ObjectMapper
 end
 
 target 'LottoPop' do

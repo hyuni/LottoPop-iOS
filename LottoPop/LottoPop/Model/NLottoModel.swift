@@ -45,11 +45,11 @@ extension NLottoModel {
     }
     
     func getLatestWinResult(success: ((NLottoWinResult?) -> Void)?, failure: ((String?) -> Void)?) {
-        let latestDrwNumber = Util.latestDrwNumber(startDateString: NLOTTO_START_DATE, dateFormat: "yyyy-MM-dd")
+        let latestDrwNumber = Util.latestDrwNumber(startDateString: NLOTTO_START_DATE, dateFormat: "yyyy-MM-dd HH:mm")
         if let winResult = self.fetchNLottoWinResult(drwNo: latestDrwNumber) {
             success?(winResult)
         } else {
-            self.request.getNLottoNumber(drwNo: 0, success: { (winResult) in
+            self.request.getNLottoNumber(drwNo: latestDrwNumber, success: { (winResult) in
                 success?(winResult)
             }) { (errMsg) in
                 if let winResult = self.fetchLatestNLottoWinResult() {

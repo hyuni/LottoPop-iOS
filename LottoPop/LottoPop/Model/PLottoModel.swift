@@ -45,11 +45,11 @@ extension PLottoModel {
     }
     
     func getLatestWinResult(success: ((Array<PLottoWinResult>?) -> Void)?, failure: ((String?) -> Void)?) {
-        let latestRound = Util.latestDrwNumber(startDateString: PLOTTO_START_DATE, dateFormat: "yyyy-MM-dd")
+        let latestRound = Util.latestDrwNumber(startDateString: PLOTTO_START_DATE, dateFormat: "yyyy-MM-dd HH:mm")
         if let winResult = self.fetchPLottoWinResult(round: latestRound) {
             success?(winResult)
         } else {
-            self.request.getPLottoNumber(round: 0, success: { (winResult) in
+            self.request.getPLottoNumber(round: latestRound, success: { (winResult) in
                 success?(winResult)
             }) { (errMsg) in
                 if let winResult = self.fetchLatestPLottoWinResult() {

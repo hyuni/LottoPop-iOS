@@ -189,13 +189,13 @@ extension PLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
             
             pLottoCell.setResultData(gameCount: winResultArr.count)
             
-            var rankNoCharacters = winResult.rankNo?.characters
-            let num1 = rankNoCharacters?.removeFirst()
-            let num2 = rankNoCharacters?.removeFirst()
-            let num3 = rankNoCharacters?.removeFirst()
-            let num4 = rankNoCharacters?.removeFirst()
-            let num5 = rankNoCharacters?.removeFirst()
-            let num6 = rankNoCharacters?.removeFirst()
+            var rankNo = winResult.rankNo
+            let num1 = rankNo?.removeFirst()
+            let num2 = rankNo?.removeFirst()
+            let num3 = rankNo?.removeFirst()
+            let num4 = rankNo?.removeFirst()
+            let num5 = rankNo?.removeFirst()
+            let num6 = rankNo?.removeFirst()
             pLottoCell.setNumberGroup1Data(
                 rankClass: winResult.rankClass,
                 num1: (nil != num1) ? String(num1!) : "",
@@ -209,13 +209,13 @@ extension PLottoWinResultVC: UITableViewDataSource, UITableViewDelegate {
         if 2 <= winResultArr.count {
             let winResult = winResultArr[1]
             
-            var rankNoCharacters = winResult.rankNo?.characters
-            let num1 = rankNoCharacters?.removeFirst()
-            let num2 = rankNoCharacters?.removeFirst()
-            let num3 = rankNoCharacters?.removeFirst()
-            let num4 = rankNoCharacters?.removeFirst()
-            let num5 = rankNoCharacters?.removeFirst()
-            let num6 = rankNoCharacters?.removeFirst()
+            var rankNo = winResult.rankNo
+            let num1 = rankNo?.removeFirst()
+            let num2 = rankNo?.removeFirst()
+            let num3 = rankNo?.removeFirst()
+            let num4 = rankNo?.removeFirst()
+            let num5 = rankNo?.removeFirst()
+            let num6 = rankNo?.removeFirst()
             pLottoCell.setNumberGroup2Data(
                 rankClass: winResult.rankClass,
                 num1: (nil != num1) ? String(num1!) : "",
